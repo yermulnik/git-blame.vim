@@ -118,7 +118,7 @@ function! gitblame#echo()
     let l:blank = ' '
     let l:file = expand('%')
     let l:file_dir = expand('%:p:h')
-    let l:file_name = s:system('readlink -n "'.l:file.'" || basename "'.l:file.'" | xargs -i echo -n "{}"')
+    let l:file_name = s:system('printf %s "$(realpath "'.l:file.'")"')  " remove trailing \n too; could be done in vim
     let l:line = line('.')
     let l:gb = gitblame#commit_summary(l:file_dir, l:file_name, l:line)
 
