@@ -117,7 +117,7 @@ endfunction
 function! gitblame#echo()
     let l:blank = ' '
     let l:file = expand('%')
-    let l:file_dir = s:system('dirname "'.l:file.'" | xargs -i echo -n "{}"')
+    let l:file_dir = expand('%:p:h')
     let l:file_name = s:system('readlink -n "'.l:file.'" || basename "'.l:file.'" | xargs -i echo -n "{}"')
     let l:line = line('.')
     let l:gb = gitblame#commit_summary(l:file_dir, l:file_name, l:line)
