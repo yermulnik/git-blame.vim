@@ -10,7 +10,7 @@ if has('nvim-0.3.2')
     let g:GBlameVirtualTextEnable = 0
  endif
 
-if has("patch-8.1.1522")
+if exists('*popup_create')
     let g:GBlameUsePopup = get(g:, 'GBlameUsePopup', 1)
 endif
 
